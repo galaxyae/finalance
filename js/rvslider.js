@@ -409,7 +409,7 @@
 			'video/vimeo': /(player.)?vimeo\.com/i,
 			'video/wistia': /(.+)?(wistia\.(com|net)|wi\.st)\/.*/i,
 			'video/daily': /(www.)?dailymotion\.com|dai\.ly/i,
-			'video/mp4': /\.mp4/i,
+			'video/mp4': /\.mkv/i,
 			'video/webm': /\.webm/i,
 			'video/wmv': /\.wmv/i,
 			'video/ogg': /\.ogv/i
@@ -532,7 +532,8 @@
 	FP.RVSliderPlayer.prototype._direct = function(urls){
 		this.$.player = $('<video/>', {
 			controls: true,
-			preload: false
+			preload: false,
+			muted: true
 		}).css({ width: '100%', height: '100%' });
 
 		var self = this, player = this.$.player[0], srcs = [];

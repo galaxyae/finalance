@@ -927,27 +927,27 @@ h2 :hover{
 			<!-- The below is a single item, simply duplicate this layout for each item -->
 			<div class="rvs-item" style="background-image: url(LARGE_IMAGE_URL)">
 				<p class="rvs-item-text">Finalance Investment<small>by Finalance Global Europe</small></p>
-				<a href="video1.mp4" class="rvs-play-video"></a>
+				<a href="video1.mkv" class="rvs-play-video"></a>
 			</div>
 
 			<div class="rvs-item" style="background-image: url(LARGE_IMAGE_URL)">
 				<p class="rvs-item-text">FINLANCE INVESTMENT <small></small></p>
-				<a href="video2.mp4" class="rvs-play-video"></a>
+				<a href="video2.mkv" class="rvs-play-video"></a>
          </div>
          
          <div class="rvs-item" style="background-image: url(LARGE_IMAGE_URL)">
 				<p class="rvs-item-text">FINLANCE INVESTMENT <small></small></p>
-				<a href="video3.mp4" class="rvs-play-video"></a>
+				<a href="video3.mkv" class="rvs-play-video"></a>
          </div>
          
          <div class="rvs-item" style="background-image: url(LARGE_IMAGE_URL)">
 				<p class="rvs-item-text">FINLANCE INVESTMENT <small></small></p>
-				<a href="video4.mp4" class="rvs-play-video"></a>
+				<a href="video4.mkv" class="rvs-play-video"></a>
          </div>
          
          <div class="rvs-item" style="background-image: url(LARGE_IMAGE_URL)">
 				<p class="rvs-item-text">FINLANCE INVESTMENT <small></small></p>
-				<a href="video5.mp4" class="rvs-play-video"></a>
+				<a href="video5.mkv" class="rvs-play-video"></a>
 			</div>
 
 		</div>
@@ -959,30 +959,30 @@ h2 :hover{
 
 			<!-- The below is the corresponding nav item for the single item, simply duplicate this layout for each item -->
 			<a class="rvs-nav-item">
-				<span class="rvs-nav-item-thumb" style="background-image: url(video1.mp4)"></span>
+				<span class="rvs-nav-item-thumb" style="background-image: url(video1.mkv)"></span>
 				<h4 class="rvs-nav-item-title">Finlance Global</h4>
 				<small class="rvs-nav-item-credits"></small>
 			</a>
 			<a class="rvs-nav-item">
-				<span class="rvs-nav-item-thumb" style="background-image: url(video2.mp4)"></span>
+				<span class="rvs-nav-item-thumb" style="background-image: url(video2.mkv)"></span>
 				<h4 class="rvs-nav-item-title">FINLANCE INVESTMENT</h4>
 				<small class="rvs-nav-item-credits"></small>
          </a>
          
          <a class="rvs-nav-item">
-				<span class="rvs-nav-item-thumb" style="background-image: url(video3.mp4)"></span>
+				<span class="rvs-nav-item-thumb" style="background-image: url(video3.mkv)"></span>
 				<h4 class="rvs-nav-item-title">FINLANCE INVESTMENT</h4>
 				<small class="rvs-nav-item-credits"></small>
          </a>
          
          <a class="rvs-nav-item">
-				<span class="rvs-nav-item-thumb" style="background-image: url(video4.mp4)"></span>
+				<span class="rvs-nav-item-thumb" style="background-image: url(video4.mkv)"></span>
 				<h4 class="rvs-nav-item-title">FINLANCE INVESTMENT</h4>
 				<small class="rvs-nav-item-credits"></small>
          </a>
          
          <a class="rvs-nav-item">
-				<span class="rvs-nav-item-thumb" style="background-image: url(video5.mp4)"></span>
+				<span class="rvs-nav-item-thumb" style="background-image: url(video5.mkv)"></span>
 				<h4 class="rvs-nav-item-title">FINLANCE INVESTMENT</h4>
 				<small class="rvs-nav-item-credits"></small>
 			</a>
@@ -1386,8 +1386,6 @@ h2 :hover{
 		// Get the <span> element that closes the modal
 		var span = document.getElementsByClassName("close")[0];
 		for(var i in btn){
-			console.log(i)
-			// When the user clicks on the button, open the modal
 			btn[i].onclick = function() {
 			  modal.style.display = "block";
 			}
@@ -1404,6 +1402,45 @@ h2 :hover{
 		    modal.style.display = "none";
 		  }
 		}
+
+		// var play = document.getElementsByClassName('rvs-play-video');
+		// for(var j in play){
+		// 	play[j].onclick = function() {
+		// 		console.log(play[j]);
+		// 	  var vid = document.getElementsByTagName("video");
+		// 		for(var i in vid){
+		// 			vid[i].muted = true;
+		// 		}
+		// 	}
+		// }
+
+		window.my_mute = false;
+
+		$('.rvs-play-video').bind('click', function(){
+
+		    $('audio,video').each(function(){
+
+		        if (!my_mute ) {
+
+		            if( !$(this).paused ) {
+		                $(this).data('muted',true); //Store elements muted by the button.
+		                $(this).pause(); // or .muted=true to keep playing muted
+		            }
+
+		        } else {
+
+		            if( $(this).data('muted') ) {
+		                $(this).data('muted',false);
+		                $(this).play(); // or .muted=false
+		            }
+
+		        }
+		    });
+
+		    my_mute = !my_mute;
+
+		});
+		
 		
    </script>
 
